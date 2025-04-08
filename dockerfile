@@ -1,17 +1,18 @@
-# Use official Python image
-FROM python:3.10
+# Dockerfile
+FROM python:3.11-slim
 
-# Set work directory
+# Set working directory inside the container
 WORKDIR /app
 
-# Copy files
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# Copy all files into the container
 COPY . .
 
-# Run app
+# Install dependencies
+RUN pip install flask
+
+# Expose port 5000 so it can be accessed outside
+EXPOSE 5000
+
+# Command to run your app
 CMD ["python", "app.py"]
-
-
-
 
