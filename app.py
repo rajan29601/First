@@ -78,7 +78,7 @@ def dashboard():
     <body>
 
       <header>
-        <h1>DevOps Dashboard</h1>
+        <h1>Hello MATA</h1>
       </header>
 
       <div class="sidebar">
