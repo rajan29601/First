@@ -1,18 +1,21 @@
-# Dockerfile
+# Use official lightweight Python image
 FROM python:3.11-slim
 
-# Set working directory inside the container
+# Set working directory in container
 WORKDIR /app
 
-# Copy all files into the container
-COPY . .
+# Copy dependency file first, then install
+COPY requirements.txt .
 
 # Install dependencies
-RUN pip install flask
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port 5000 so it can be accessed outside
+# Copy the rest of the app
+COPY . .
+
+# Expose port
 EXPOSE 5000
 
-# Command to run your app
+# Run the Flask app
 CMD ["python", "app.py"]
 
